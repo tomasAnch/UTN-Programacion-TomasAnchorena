@@ -35,16 +35,16 @@
 #  exponente, utilizando la fórmula 𝑛**𝑚 = 𝑛 ∗ 𝑛 ** (𝑚−1)
 #  Prueba esta función en un algoritmo general.
 
-def potencia(num, exp):
-    if exp == 0:
-        return 1
-    else: 
-        return num * potencia(num, exp - 1)
+# def potencia(num, exp):
+#     if exp == 0:
+#         return 1
+#     else: 
+#         return num * potencia(num, exp - 1)
 
-print('Hola maquinola vamos a calcular la potencia que quieras de un número dado')
-numero = int(input('Primero decime el número: '))
-exponente = int(input('Ahora la potencia y calculo: '))
-print(potencia(numero, exponente))
+# print('Hola maquinola vamos a calcular la potencia que quieras de un número dado')
+# numero = int(input('Primero decime el número: '))
+# exponente = int(input('Ahora la potencia y calculo: '))
+# print(potencia(numero, exponente))
 
 ############################################################################################################################
 
@@ -65,6 +65,17 @@ print(potencia(numero, exponente))
 #  1 ÷ 2 = 0 resto: 1 
 #  Leyendo los restos de abajo hacia arriba: 1 0 1 0 → El resultado binario es "1010".
 
+# def decimal_a_binario(num):
+#     if num == 0:
+#         return '0'
+#     elif num == 1:
+#         return '1'
+#     else:
+#         return decimal_a_binario(num // 2) + str(num % 2)
+
+# print(decimal_a_binario(10))
+
+
 ############################################################################################################################
 
 # 5) Implementá una función recursiva llamada es_palindromo(palabra) que reciba una
@@ -73,6 +84,30 @@ print(potencia(numero, exponente))
 #  Requisitos
 #  La solución debe ser recursiva.
 #  No se debe usar [::-1] ni la función reversed().
+# import re
+
+# def es_palindromo( palabra ):
+
+#     tiene_tildes = re.compile(r"[\u0300-\u036F]") # <- Google / w3schools.com
+#     if re.search(tiene_tildes, palabra) or re.search(r"\s", palabra):
+#         print('La palabra no puede tener tildes o espacios')
+#         return False
+
+#     else: 
+
+#         if len(palabra) == 0 or len(palabra) == 1:
+#             return True
+        
+#         primera_letra = palabra[ 0 ]
+#         ultima_letra = palabra[ -1 ]
+
+#         if primera_letra != ultima_letra:
+#             return False 
+#         else:
+#             return es_palindromo(palabra[1:-1])
+
+# print(es_palindromo('reconocer'))
+        
 
 ############################################################################################################################
 
@@ -85,6 +120,14 @@ print(potencia(numero, exponente))
 #  suma_digitos(1234) → 10 (1 + 2 + 3 + 4)
 #  suma_digitos(9) → 9
 #  suma_digitos(305) → 8 (3 + 0 + 5)
+
+# def suma_digitos(n):
+#     if n == 0:
+#         return 0
+#     else:
+#         return suma_digitos( n // 10 ) + n % 10
+
+# print(suma_digitos(1234))
 
 ############################################################################################################################
 
@@ -99,6 +142,14 @@ print(potencia(numero, exponente))
 #  contar_bloques(2) → 3 (2 + 1)
 #  contar_bloques(4) → 10 (4 + 3 + 2 + 1)
 
+# def contar_bloques(n):
+#     if n == 0:
+#         return 0
+#     else:
+#         return n + contar_bloques( n - 1 )
+
+# print(contar_bloques(10))
+
 ############################################################################################################################
 
 # 8) Escribí una función recursiva llamada contar_digito(numero, digito) que reciba un
@@ -108,6 +159,26 @@ print(potencia(numero, exponente))
 #  contar_digito(12233421, 2) → 3
 #  contar_digito(5555, 5) → 4
 #  contar_digito(123456, 7) → 0 
+
+def contar_digito(numero, digito):
+    if digito > 9: 
+        return 'El dígito debe estar entre 0 y 9'
+    elif numero == 0:
+        return 0
+    else:
+        ultimo_digito = numero % 10
+        if ultimo_digito == digito:
+            return 1 + contar_digito(numero // 10, digito)
+        else:
+            return contar_digito(numero // 10, digito)
+print(contar_digito(122222, 2))
+
+
+
+
+
+
+
 
 
 
